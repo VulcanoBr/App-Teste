@@ -1,0 +1,70 @@
+<%= form_with(model: client, local: true) do |form| %>
+  <% if client.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(client.errors.count, "error") %> prohibited this client from being saved:</h2>
+
+      <ul>
+        <% client.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :name %>
+    <%= form.text_field :name %>
+  </div>
+
+  <div class="field">
+    <%= form.label :email %>
+    <%= form.text_field :email %>
+  </div>
+
+  <div class="field">
+    <%= form.label :age %>
+    <%= form.number_field :age %>
+  </div>
+  <div class="field"  >
+    <%= form.label :type %>
+    <%= form.text_field :type %>
+  </div>
+
+  <div class="field" id="radiobuttons1" >
+      <%= radio_button_tag 'exp', "cpf" %> CPF
+      <%= radio_button_tag 'exp', "cnpj" %> CNPJ  : 
+  </div>  
+
+  <div class="field">  
+      <%= form.text_field :cpf_cnpj, id: "test", name: "client[cpf_cnpj]" %> 
+      <%=  javascript_pack_tag 'radiobuttons' %>
+  </div>  
+  
+  <!--  <div>
+      <label>
+        <input type="radio" name="document-type" value="cpf" checked /> CPF
+      </label>
+
+      <label>
+        <input type="radio" name="document-type" value="cnpj" /> CNPJ
+      </label>
+    </div>
+
+    <div class="field">
+      <input type="text" name="client[cpf_cnpj]" placeholder="CPF" id="test" />
+    </div>
+
+    <%=  javascript_pack_tag 'radiobuttons' %>  -->
+  
+ 
+ <input id="raid1" type="radio" value="1" name="choice">1</input>
+<input id="raid2" type="radio" value="2" name="choice">2</input>
+<input id="raid3" type="radio" value="3" name="choice">3</input>
+<br/>
+You selected: 
+<label id="choiceLabel"></label>
+
+  <div class="actions" onsubmit="validaCpfCnpj()" >
+    <%= form.submit %>
+  </div>
+<% end %>
