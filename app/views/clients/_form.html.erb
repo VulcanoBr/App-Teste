@@ -1,15 +1,29 @@
-<%= form_with(model: client, local: true) do |form| %>
-  <% if client.errors.any? %>
+<%= form_with(model: @client, local: true) do |form| %>
+  <% if @client.errors.any? %>
     <div id="error_explanation">
-      <h2><%= pluralize(client.errors.count, "error") %> prohibited this client from being saved:</h2>
+      <h2><%= pluralize(@client.errors.count, "error") %> prohibited this client from being saved:</h2>
 
       <ul>
-        <% client.errors.full_messages.each do |message| %>
+        <% @client.errors.full_messages.each do |message| %>
           <li><%= message %></li>
         <% end %>
       </ul>
     </div>
   <% end %>
+
+  <div class="field">
+    <label>Teste field </label>
+    <input type="text" id="phone" name="phone" maxlength="15"  />
+    <%=  javascript_pack_tag 'masktel' %>
+   
+  </div>
+
+  <div class="field">
+    <label>Teste valor </label>
+    <input type="text" id="valor" name="valor" placeholder="0,00" /><br>
+    <%=  javascript_pack_tag 'maskprice' %>
+   
+  </div>
 
   <div class="field">
     <%= form.label :name %>
@@ -27,7 +41,7 @@
   </div>
   <div class="field"  >
     <%= form.label :type %>
-    <%= form.text_field :type %>
+    <%= form.text_field number_to_currency(client.age, :locale => "pt-BR") %>
   </div>
 
   <div class="field" id="radiobuttons1" >
@@ -57,14 +71,15 @@
     <%=  javascript_pack_tag 'radiobuttons' %>  -->
   
  
- <input id="raid1" type="radio" value="1" name="choice">1</input>
-<input id="raid2" type="radio" value="2" name="choice">2</input>
-<input id="raid3" type="radio" value="3" name="choice">3</input>
-<br/>
-You selected: 
-<label id="choiceLabel"></label>
+  <input id="raid1" type="radio" value="1" name="choice">1</input>
+  <input id="raid2" type="radio" value="2" name="choice">2</input>
+  <input id="raid3" type="radio" value="3" name="choice">3</input>
+  <br/>
+  You selected:   
+  <label id="choiceLabel"></label>
 
-  <div class="actions" onsubmit="validaCpfCnpj()" >
-    <%= form.submit %>
+  <div class="actions"  >
+    <%= form.submit "Salvar", id: "btn", onClick: "convert()" %>
+    <%=  javascript_pack_tag 'convertprice' %>
   </div>
 <% end %>

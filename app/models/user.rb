@@ -1,17 +1,20 @@
 class User < ApplicationRecord
 
-  validates :name, :cpf_cnpj, presence: true
+  validates :name, presence: true
+  validates :cpf_cnpj, presence: true
   attribute :age, :integer, default: 0
 
-   validate :cpfcnpj
-
-   validate :idade
+   
 
   
    # validates_inclusion_of  :name, :in => %w( m, f )
 
   # validates_format_of :email, with: /\A[\w]([^@\s,;]+)@(([\w-]+\.)+(com|edu|org|net|gov|mil|biz|info))\z/i
     validates_format_of :email, with: /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\z/i
+
+    validate :cpfcnpj
+
+   validate :idade
  
    # def self.search(q)  
    #               where("lower(user.name) LIKE :q", search: "%#{q}%")  
@@ -20,7 +23,7 @@ class User < ApplicationRecord
     private
 
     def cpfcnpj
-        if (cpf_cnpj.nil?)  ||  (cpf_cnpj.empty?)  || (cpf_cnpj.blank?)
+        if ((cpf_cnpj.nil?)  ||  (cpf_cnpj.empty?)  || (cpf_cnpj.blank?))
             errors.add("",  "CPF não preenchido   !!!  ")
         else
             if cpf_cnpj.length ==  14

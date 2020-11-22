@@ -13,22 +13,22 @@
             
             if (x === "cpf") {
                 document.getElementById('choiceLabel').innerText = "valw cpf";
-                document.querySelector("input[name='client[cpf_cnpj]']").value  = " ";
+                document.querySelector("input[name='client[cpf_cnpj]']").value  = "";
                 document.querySelector("input[name='client[cpf_cnpj]']").placeholder = "CPF";
                 mascaracpf();   
                  }
                
             else  if (x === "cnpj") {
                     document.getElementById('choiceLabel').innerText = "vale cnpj";
-                    document.querySelector("input[name='client[cpf_cnpj]']").value  = " ";
+                    document.querySelector("input[name='client[cpf_cnpj]']").value  = "";
                     document.querySelector("input[name='client[cpf_cnpj]']").placeholder = "CNPJ";
                     mascaracnpj();
                      }
                   else
                     document.getElementById('choic {eLabel').innerText = "sem escolha";
-           
-        }
-    }
+                
+        };
+    };
 })();
 
 function mascaracpf( ){

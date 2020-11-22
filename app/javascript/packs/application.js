@@ -16,10 +16,10 @@ require("channels")
 // const images = require.context('../images', true)
 // const imagePath = (name) => images(name, true)
 
-require("cpf_cnpj")
-require("cpf/formatter")
+import("cpf_cnpj");
+import("cpf/formatter");
 
-//require("javascript/packs/cnpj.js")
+//import("packs/convertprice");
 
 // // require("javascript/packs/cpf.js")
 
@@ -31,4 +31,4 @@ require("cpf/formatter")
 
 
   
-$('.cpf_cnpj').mask('000.000.000-00', {reverse: true});
+// $('.cpf_cnpj').mask('000.000.000-00', {reverse: true});
