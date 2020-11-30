@@ -1,15 +1,9 @@
 class User < ApplicationRecord
 
-  validates :name, presence: true
-  validates :cpf_cnpj, presence: true
-  attribute :age, :integer, default: 0
+    validates :name, presence: true
+    validates :cpf_cnpj, presence: true
+    attribute :age, :integer, default: 0
 
-   
-
-  
-   # validates_inclusion_of  :name, :in => %w( m, f )
-
-  # validates_format_of :email, with: /\A[\w]([^@\s,;]+)@(([\w-]+\.)+(com|edu|org|net|gov|mil|biz|info))\z/i
     validates_format_of :email, with: /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\z/i
 
     validate :cpfcnpj

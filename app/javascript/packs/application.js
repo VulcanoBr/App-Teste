@@ -16,19 +16,4 @@ require("channels")
 // const images = require.context('../images', true)
 // const imagePath = (name) => images(name, true)
 
-import("cpf_cnpj");
-import("cpf/formatter");
-
-//import("packs/convertprice");
-
-// // require("javascript/packs/cpf.js")
-
-// require("javascript/packs/radiobuttons.js")
-
-//require 'active_support'
-//require 'active_support/core_ext/object/blank'
-
-
-
-  
-// $('.cpf_cnpj').mask('000.000.000-00', {reverse: true});
+require('cpf_cnpj')

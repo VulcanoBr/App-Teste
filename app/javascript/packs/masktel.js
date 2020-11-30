@@ -1,7 +1,7 @@
 
 
 
-/* Máscaras ER */
+/* Máscaras Telephone */
 function mascara(o,f){
     v_obj=o;
     v_fun=f;
@@ -20,8 +20,24 @@ function id( el ){
     return document.getElementById( el );
 };
 
-window.onload = function(){
+// window.onload = function(){
+//console.log("antes de tudo");
+(function () {
+
+//console.log("antes de input");
 	id('phone').onkeyup = function(){
-		mascara( this, mtel );
+        mascara( this, mtel );
+
+    //console.log("depois da mascara");
 	}
-}
+})();
+//.log("antes de tudo 1");
+//document.addEventListener("DOMContentLoaded", () => {
+//    console.log("antes do input 1");
+//    document.getElementById('phone').addEventListener("input", () => {
+///        console.log("antes da mascara 1");
+//       mascara(this, mtel);
+//        console.log("depos da mascara 1");
+ //   });
+//});
+// console.log("depos de tudo 1");

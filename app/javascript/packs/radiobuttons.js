@@ -3,8 +3,8 @@
 
 (function (){
     var radios = document.getElementsByName('exp');
-   
-          
+ //   document.getElementById('choiceLabel').innerText = "Escolha CPF ou CNPJ";
+    document.querySelector("input[name='client[cpf_cnpj]']").placeholder = "Escolha CPF ou CNPJ";
     
     for(var i = 0; i < radios.length; i++){
         radios[i].onclick = function(){
@@ -25,7 +25,7 @@
                     mascaracnpj();
                      }
                   else
-                    document.getElementById('choic {eLabel').innerText = "sem escolha";
+                    document.getElementById('choiceLabel').innerText = "sem escolha";
                 
         };
     };
@@ -38,7 +38,7 @@ function mascaracpf( ){
         e.target.value = !c[2] ? c[1] : c[1] + '.' + c[2] + '.' + c[3] + (c[4] ? '-' + c[4] : '');
     });
    
-}
+};
 
 function mascaracnpj( ){
 
@@ -47,7 +47,7 @@ function mascaracnpj( ){
         e.target.value = !x[2] ? x[1] : x[1] + '.' + x[2] + '.' + x[3] + '/' + x[4] + (x[5] ? '-' + x[5] : '');
     });
    
-}
+};
 
 function validaCpfCnpj() {
     var cpfcnpj = document.getElementById("test").value;
@@ -64,7 +64,7 @@ function validaCpfCnpj() {
                 alert("depois da validação");
 
 
-}
+};
 
 function CpfCnpjValida(val) {
     if (val.length == 14) {
@@ -183,4 +183,4 @@ function CpfCnpjValida(val) {
     } else {
         return false;
     }
- }
+ };

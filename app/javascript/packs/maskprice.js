@@ -1,7 +1,7 @@
 
-document.addEventListener('DOMContentLoaded', () => {
-//(function ()
- //   {
+// document.addEventListener('DOMContentLoaded', () => {
+(function ()
+  {
         var v = "";
       //  document.querySelector("input[name='stock_entry[unit_price]']").placeholder  = "0,00";
         document.getElementById('valor').addEventListener('input', function(e) {
@@ -13,4 +13,5 @@ document.addEventListener('DOMContentLoaded', () => {
             e.target.value = v;
 
         });
-    });
+      
+  })();
