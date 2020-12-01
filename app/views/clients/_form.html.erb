@@ -12,7 +12,7 @@
   <% end %>
 
   <div class="field">
-    <label>Teste field </label>
+    <label>Teste Telefone </label>
     <%= form.text_field :phone,  id: "phone", maxlength: "15", name: "client[phone]" %>
     <%=  javascript_pack_tag 'masktel' %>
    
@@ -20,7 +20,7 @@
 
   <div class="field">
     <label>Teste valor </label>
-    <input type="text" id="valor" name="valor" placeholder="0,00" name="client[price]"/><br>
+    <input type="text" id="valor"  placeholder="0,00" name="client[price]" />
     <%=  javascript_pack_tag 'maskprice' %>
    
   </div>
@@ -41,7 +41,7 @@
   </div>
   <div class="field"  >
     <%= form.label :type %>
-    <%= form.text_field :price %>  <!-- >number_to_currency(client.price, :locale => "pt-BR") %>  -->
+    <%= form.text_field :price %>  
   </div>
 
   <div class="field" id="radiobuttons1" >
@@ -55,7 +55,7 @@
   </div>  
  
   <div class="actions"  >
-    <%= form.submit "Salvar", id: "btn", onclick: "convert()" %>
-    <%=  javascript_pack_tag 'convertprice' %>
+    <%= form.submit "Salvar", id: "btn" %>
+   
   </div>
 <% end %>
