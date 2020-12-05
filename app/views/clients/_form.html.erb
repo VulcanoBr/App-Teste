@@ -1,7 +1,7 @@
 <%= form_with(model: @client, local: true) do |form| %>
   <% if @client.errors.any? %>
     <div id="error_explanation">
-      <h2><%= pluralize(@client.errors.count, "erros, ") %> Campos incorretos :</h2>
+      <h2><%= pluralize(@client.errors.count, "erros, ") %> Campos incorretos:</h2>
 
       <ul>
         <% @client.errors.full_messages.each do |message| %>
@@ -12,17 +12,13 @@
   <% end %>
 
   <div class="field">
-    <label>Teste Telefone </label>
-    <%= form.text_field :phone,  id: "phone", maxlength: "15", name: "client[phone]" %>
-    <%=  javascript_pack_tag 'masktel' %>
-   
+    <%= form.label :phone, "Telefone" %>
+    <%= form.text_field :phone, class: "phone-with-mask", maxlength: "15" %>
   </div>
 
   <div class="field">
-    <label>Teste valor </label>
-    <input type="text" id="valor"  placeholder="0,00" name="client[price]" />
-    <%=  javascript_pack_tag 'maskprice' %>
-   
+    <%= form.label :price, "Preço" %>
+    <%= form.text_field :price, class: "price-with-mask", placeholder: "0,00" %>
   </div>
 
   <div class="field">
@@ -32,30 +28,41 @@
 
   <div class="field">
     <%= form.label :email %>
-    <%= form.text_field :email %>
+    <%= form.email_field :email %>
   </div>
 
   <div class="field">
     <%= form.label :age %>
     <%= form.number_field :age %>
   </div>
-  <div class="field"  >
+
+  <div class="field">
     <%= form.label :type %>
-    <%= form.text_field :price %>  
+    <%= form.text_field :price %>
   </div>
 
-  <div class="field" id="radiobuttons1" >
-      <%= radio_button_tag 'exp', "cpf" %> CPF
-      <%= radio_button_tag 'exp', "cnpj" %> CNPJ  : 
-  </div>  
+  <div class="field" style="display: flex">
+    <%= label_tag do %>
+      <%= radio_button_tag :document_type, "cpf" %>
+      CPF
+    <% end %>
 
-  <div class="field">  
-      <%= form.text_field :cpf_cnpj, id: "test", name: "client[cpf_cnpj]" %> 
-      <%=  javascript_pack_tag 'radiobuttons' %>
-  </div>  
- 
-  <div class="actions"  >
+    <%= label_tag do %>
+      <%= radio_button_tag :document_type, "cnpj" %>
+      CNPJ
+    <% end %>
+  </div>
+
+  <div class="field">
+    <%= form.text_field :cpf_cnpj, class: "cpf-cnpj-with-mask",
+      disabled: true, placeholder: "Escolha CPF ou CNPJ" %>
+  </div>
+
+  <div class="actions">
     <%= form.submit "Salvar", id: "btn" %>
-   
   </div>
 <% end %>
+
+<%= javascript_pack_tag "masktel" %>
+<%= javascript_pack_tag "maskprice" %>
+<%= javascript_pack_tag "radiobuttons" %>
