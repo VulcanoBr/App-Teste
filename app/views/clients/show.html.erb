@@ -7,7 +7,13 @@
 
 <p>
   <strong>Valor:</strong>
-  <%= @client.price %>
+  <%=  number_to_currency(@client.price, locale: :"pt-BR") %>
+</p>
+
+<p>
+  <strong>Valor Unitario: </strong>
+  <%=  number_to_currency(@client.unit_price, locale: :"pt-BR") %>
+</p>
 
 <p>
   <strong>Name:</strong>

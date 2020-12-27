@@ -22,8 +22,13 @@
   </div>
 
   <div class="field">
+    <%= form.label :unit_price, "Preço unitario" %>
+    <%= form.text_field :unit_price, class: "price-with-mask", placeholder: "0,00" %>
+  </div>
+
+  <div class="field">
     <%= form.label :name %>
-    <%= form.text_field :name %>
+    <%= form.text_field :name, disabled: action_name == "edit" %>
   </div>
 
   <div class="field">
@@ -38,7 +43,7 @@
 
   <div class="field">
     <%= form.label :type %>
-    <%= form.text_field :price %>
+    <%= form.text_field :type %>
   </div>
 
   <div class="field" style="display: flex">
@@ -59,10 +64,13 @@
   </div>
 
   <div class="actions">
-    <%= form.submit "Salvar", id: "btn" %>
+    <%= form.submit "Salvar", class: "btn" %>
   </div>
 <% end %>
 
 <%= javascript_pack_tag "masktel" %>
 <%= javascript_pack_tag "maskprice" %>
 <%= javascript_pack_tag "radiobuttons" %>
+<%= javascript_pack_tag "convertprice" %>
+<%= javascript_pack_tag "priceconvert" %>
+

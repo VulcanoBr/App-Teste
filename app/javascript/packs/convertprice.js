@@ -1,22 +1,57 @@
-//document.addEventListener('DOMContentLoaded', () => {
-(function convert() {
-    document.getElementById('btn').addEventListener('input', function(e) {
-        v = e.target.value.replace(/\D/g,'');
-        alert("entrei");
-   // var b = document.getElementsById("btn");
-    //document.getElementById('test').addEventListener('click', function(e) {
-  //      var m = e.target.value
- //   b.addEventListener("click", function() {
-        alert("na função");
-        var m = document.getElementsById("valor").value;
-        alert("valor " + m);
-        var numUSD = new Intl.NumberFormat("en-US", {
-            style:"currency", currency: "USD"
+//document.querySelectorAll(".btn").addEventListener("click", (event) => {
+ // alert("entrei");
+ // const val = event.document.querySelector("input[name='client[price]']").value
+ //     .replace(/[.]/g, "");
+ //     x = val.replace(/[,]/g, ".");
+ //     document.querySelector("input[name='client[price]']").value = x;
+//});
 
-        });
+document.addEventListener('DOMContentLoaded', () => {
+  //  (function () {
+ //       console.log("entrei");
+       convert();
     
-     //   alert(numUSD.format(m));
-        alert("valor " + m);
-    });
+});
+      
+function convert() {
+  document.querySelectorAll(".btn").forEach((submit) => {
+    submit.addEventListener("click", ({ target }) => {
+          alert("convert");
+  //     const val = document.querySelector("input[name='client[price]']");
+         const val = document.querySelector("input[name='client[price]']").value
+         .replace(/[.]/g, "");
+         x = val.replace(/[,]/g, ".");
+      
+         alert("valor2 " + x);
+        document.querySelector("input[name='client[price]']").value = x;
 
-})();
+        const val1 = document.querySelector("input[name='client[unit_price]']").value
+          .replace(/[.]/g, "");
+        z = val1.replace(/[,]/g, ".");
+     
+          alert("valor2 " + z);
+       document.querySelector("input[name='client[unit_price]']").value = z;
+    });
+  });
+        
+};
+
+  //  (function iniciar()  {
+        
+      //  convert();
+
+      //   var x = "";
+      
+       //   x =  document.querySelector("input[name='client[price]']").value
+            //    .replace(/[^\d.]/g, '');
+       //     .replace(/[,.]/g, ".");
+           
+         //   alert("valor " + x );
+      //    x = parseFloat(valor).toFixed(2);
+      //    alert("valor2" + x);
+     // document.querySelector("input[name='client[price]']").value = x;
+           
+         //   console.log("valor " + valor);
+       //  return price;
+  //  })();
+

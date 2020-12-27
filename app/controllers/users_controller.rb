@@ -8,11 +8,12 @@ class UsersController < ApplicationController
   end
 
   def search
-    if params[:q].blank?
+    @users = User.search(params[:search])
+    if params[:search].blank?
         redirect_to(root_path, alert: "Search esta vazio") and return
     else
         @results = User.where('name like ? OR email like ?',
-          "%#{params[:q]}%", "%#{params[:q]}%")
+          "%#{params[:search]}%", "%#{params[:search]}%")
       #  @results = Car.joins(:user).search(params[:q]).order("users.name DESC")
     end
   end
@@ -64,6 +65,7 @@ class UsersController < ApplicationController
   # DELETE /users/1
   # DELETE /users/1.json
   def destroy
+   # @car = User.can_be_destroyed(params[:id])
     @user.destroy
     respond_to do |format|
       format.html { redirect_to users_url, notice: 'User was successfully destroyed.' }
@@ -79,6 +81,6 @@ class UsersController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def user_params
-      params.require(:user).permit(:name, :email, :age, :type, :cpf_cnpj, :price, :phone, :q)
+      params.require(:user).permit(:id, :name, :email, :age, :type, :cpf_cnpj, :price, :phone, :unit_price, :q)
     end
 end

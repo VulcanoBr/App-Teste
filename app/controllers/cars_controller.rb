@@ -5,18 +5,18 @@ class CarsController < ApplicationController
   # GET /cars
   # GET /cars.json
   def index
-   # @cars = Car.all
-   # @cars = Car.search(params[:search])
+    #cars = Car.new
+    @cars = Car.search(params[:search])
 
-    if params[:search].blank?
-      @cars = Car.all
-    else
-      @parameter = params[:search].downcase
+  ##  if params[:search].blank?
+  ##    @cars = Car.all
+  ##  else
+  ##    @parameter = params[:search].downcase
   #    @results = Car.joins(:user).where('lower (users.name) LIKE ?', "%#{@parameter}%").order("users.name DESC")
   #   @results = Car.joins(:user).where('users.name LIKE ?', "%#{params[:q]}%").order("users.name DESC")
   #   @results = Car.joins(:user).where(params[:q]).order("users.name DESC")
-      @cars = Car.where('lower(name) LIKE ?', "%#{@parameter}%")
-    end
+  ##    @cars = Car.where('lower(name) LIKE ?', "%#{@parameter}%")
+  ##  end
   end
 
   # GET /cars/1

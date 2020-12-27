@@ -63,10 +63,12 @@ class ClientsController < ApplicationController
   # DELETE /clients/1
   # DELETE /clients/1.json
   def destroy
-    @client.destroy
-    respond_to do |format|
-      format.html { redirect_to clients_url, notice: 'client was successfully destroyed.' }
-      format.json { head :no_content }
+    client = User.find(params[:id])  
+    if client.can_be_destroyed?
+      client.destroy!
+      redirect_to clients_url, notice: "Cliente foi removido com sucesso."
+    else
+      redirect_to clients_url, notice: "Cliente #{client.name} NÃO pode ser removido."
     end
   end
 
@@ -78,6 +80,6 @@ class ClientsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def client_params
-      params.require(:client).permit(:name, :email, :age, :type, :cpf_cnpj, :price, :phone, :q)
+      params.require(:client).permit(:name, :email, :age, :type, :cpf_cnpj, :price, :phone, :unit_price, :q)
     end
 end

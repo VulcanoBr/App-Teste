@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_11_25_003328) do
+ActiveRecord::Schema.define(version: 2020_12_08_173652) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -35,6 +35,7 @@ ActiveRecord::Schema.define(version: 2020_11_25_003328) do
     t.string "cpf_cnpj"
     t.float "price"
     t.string "phone"
+    t.decimal "unit_price"
   end
 
   add_foreign_key "cars", "users"

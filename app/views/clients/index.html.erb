@@ -1,7 +1,7 @@
 <p id="notice"><%= notice %></p>
 
 <h1> Bem vindo Client </h1>
-<%= form_with url: search_path, method: :get do %>
+<%= form_with(url: '/clients', method: 'get', local: true) do %>
   <%= label_tag :q, 'Busca:' %>
   <%= text_field_tag :q %>
   <%= submit_tag 'Pesquisar' %>
@@ -33,7 +33,7 @@
         <td><%= user.age %></td>
          <td><%= user.type %></td>
         <td><%= user.cpf_cnpj %></td>
-        <td><%= user.price %></td>
+        <td><%= number_to_currency(user.price, locale: :"pt-BR") %></td>
         <td><%= link_to 'Show', user %></td>
         <td><%= link_to 'Edit', edit_client_path(user) %></td>
         <td><%= link_to 'Destroy', user, method: :delete, data: { confirm: 'Are you sure?' } %></td>

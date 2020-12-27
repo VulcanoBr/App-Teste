@@ -1,3 +1,4 @@
 class Client < User
 
+   
 end
